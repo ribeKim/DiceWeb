@@ -1,0 +1,14 @@
+{
+  "name": "minigame.web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ribeKim/DiceWeb.git",
+  "author": "ribeKim <ribe@ribe.io>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "next": "^11.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
