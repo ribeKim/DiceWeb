@@ -1,7 +1,10 @@
-import { AppProps } from 'next/app'
+import {AppProps} from 'next/app';
+import DefaultLayout from '../layouts/defaultLayout';
 
-function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+export default function App({Component, pageProps}: AppProps) {
+  return (
+      <DefaultLayout>
+        <Component {...pageProps} />
+      </DefaultLayout>
+  );
 }
-
-export default App
