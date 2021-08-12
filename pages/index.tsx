@@ -1,6 +1,7 @@
- const Index = () => (
+import Test from './test/workertest'
+const Index = () => (
     <div>
-      <p>next.js</p>
+      <Test />
     </div>
 )
 
