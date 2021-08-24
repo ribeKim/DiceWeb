@@ -3,9 +3,9 @@ import { useEffect, useRef, useCallback } from "react";
 export default function Test() {
   const workRef = useRef<Worker>();
   useEffect(() => {
-    workRef.current = new Worker('../workers/test.worker.js');
+    workRef.current = new Worker('../workers/SocketIoWorker.js');
     workRef.current.onmessage = evt => {
-      alert(`WebWorker Response => ${evt.data}`);
+      alert(`WebWorker Response => ${evt}`);
     }
     return () => {
       workRef.current.terminate();

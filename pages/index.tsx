@@ -1,7 +1,13 @@
 import Test from './test/workertest'
+import Dice from './dice/index'
 const Index = () => (
     <div>
-      <Test />
+      <div>
+        <Dice />
+      </div>
+      <div>
+        <Test />
+      </div>
     </div>
 )
 
