@@ -16,9 +16,14 @@ export default function Test() {
     workRef.current.postMessage(100000);
   }, []);
 
+  const WebWorkerTest = useCallback(async () => {
+    workRef.current.postMessage(JSON.stringify({id:0, sender:'aabbcc'}));
+  }, []);
+
   return (
     <div>
       <button onClick={handleWork}>worker Test</button>
+      <button onClick={WebWorkerTest}>packet test</button>
     </div>
   )
 }

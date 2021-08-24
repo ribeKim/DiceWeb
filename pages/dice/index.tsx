@@ -58,6 +58,5 @@ export default function Dice() {
         {`Loading: ${progression}`}
       </p>
     </div>
-
   );
 }

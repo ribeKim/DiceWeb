@@ -10,5 +10,5 @@ socket.emit('test', {data: 'websocket test'});
 
 addEventListener('message', (e) => {
   console.log(e);
-  socket.emit('number', {data: e.data});
+  socket.emit('message', {data: e.data});
 });
