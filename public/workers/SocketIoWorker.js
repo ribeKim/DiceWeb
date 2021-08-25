@@ -10,10 +10,10 @@ socket.emit('test', {data: 'websocket test'});
 
 addEventListener('message', (e) => {
   console.log(e);
-  socket.emit('req', {data: e.data.msg});
+  socket.emit('message', {data: e.data.msg});
 });
 
-socket.on('res', (data) => {
+socket.on('message', (data) => {
   console.log(data);
   postMessage(JSON.stringify({id: data.id, msg: JSON.stringify(data)}));
 });
