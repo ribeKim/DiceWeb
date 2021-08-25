@@ -1,19 +1,19 @@
 importScripts('https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js');
 
-const socket = io('https://pi.coco1337.xyz:41000', { transports: ['websocket']});
+const socket = io('http://localhost:8080', { transports: ['websocket']});
 
 socket.on('connect', () => {
   console.log('connected');
 });
 
-socket.emit('test', {data: 'websocket test'});
+// socket.emit('test', {data: 'websocket test'});
 
 addEventListener('message', (e) => {
-  console.log(e);
+  console.log(`incoming message from main thread ${e}`);
   socket.emit('message', {data: e.data.msg});
 });
 
 socket.on('message', (data) => {
-  console.log(data);
-  postMessage(JSON.stringify({id: data.id, msg: JSON.stringify(data)}));
+  console.log(`incoming message from server ${data}`);
+  postMessage(data);
 });

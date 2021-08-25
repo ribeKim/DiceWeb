@@ -5,9 +5,6 @@ const Index = () => (
       <div>
         <Dice />
       </div>
-      <div>
-        <Test />
-      </div>
     </div>
 )
 

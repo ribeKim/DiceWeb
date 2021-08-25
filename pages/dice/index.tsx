@@ -35,12 +35,16 @@ export default function Dice() {
     workRef.current = new Worker('../workers/SocketIoWorker.js');
     workRef.current.onmessage = evt => {
       console.log(`receive message from worker : ${evt.data}`);
-      unityContext.send('WebSocketManager', 'ReceiveWebMessage', evt.data);
+      const threadMessage = JSON.parse(evt.data);
+      const msg = {id: threadMessage.id, msg: JSON.stringify(threadMessage)};
+      console.log(`send message to unity: `);
+      console.log(msg);
+      unityContext.send('WebSocketManager', 'ReceiveWebMessage', JSON.stringify(msg));
     };
 
-    unityContext.on('SendPacket', (id: number, str: string) => {
-      console.log(`packet id : ${id}, detail : ${str}`);
-      SendMessage(id, str);
+    unityContext.on('SendPacket', (str: string) => {
+      console.log(`packet ${str}`);
+      SendMessageToServer(str);
     });
 
     unityContext.on("progress", function (progression) {
@@ -60,8 +64,8 @@ export default function Dice() {
     console.log("test button clicked - in index.tsx");
   }
 
-  const SendMessage = useCallback(async (id: number, str: string) => {
-    workRef.current.postMessage({id: id, msg: str});
+  const SendMessageToServer = useCallback(async (str: string) => {
+    workRef.current.postMessage({msg: str});
   }, []);
 
   return (
